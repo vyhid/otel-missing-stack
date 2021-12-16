@@ -4,11 +4,9 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 public class ExceptionTest {
     //VM args
-    //-javaagent:"C:\Users/avyhidn/Downloads/opentelemetry-javaagent-9.jar"
+    //-javaagent:"/opentelemetry-javaagent-9.jar"
     //-Dotel.resource.attributes=service.name="otel-er-3"
     //-Dotel.exporter.otlp.endpoint=http://localhost:8200
-    //-Dotel.metrics.exporter=none
-    //-Dotel.traces.exporter=otlp
     //-Dotel.javaagent.debug=true
 
     public static void main(String[] args) {
