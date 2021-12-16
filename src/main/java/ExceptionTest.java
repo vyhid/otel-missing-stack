@@ -1,26 +1,29 @@
 import io.opentelemetry.extension.annotations.WithSpan;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
 
 public class ExceptionTest {
     //VM args
-    //-javaagent:"/opentelemetry-javaagent.jar"
-    //-Dotel.resource.attributes=service.name="my-app"
+    //-javaagent:"C:\Users/avyhidn/Downloads/opentelemetry-javaagent-9.jar"
+    //-Dotel.resource.attributes=service.name="otel-er-3"
+    //-Dotel.exporter.otlp.endpoint=http://localhost:8200
+    //-Dotel.metrics.exporter=none
+    //-Dotel.traces.exporter=otlp
     //-Dotel.javaagent.debug=true
 
-    // Evn
-    // OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:8200
     public static void main(String[] args) {
         testSpan();
     }
 
     @WithSpan("Span test")
     private static void testSpan() {
-        Object block = WebClient.create("http://localhost:8090")
+        ResponseEntity<Void> response = WebClient.create("http://localhost:8090")
                 .get()
-                .exchange()
+                .retrieve()
+                .toBodilessEntity()
                 .block();
 
-        System.out.println(block);
+        System.out.println(response.getStatusCode());
     }
 
 }
