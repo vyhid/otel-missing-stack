@@ -3,7 +3,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 public class ExceptionTest {
     //VM args
-    //-javaagent:"C:\Users/avyhidn/Downloads/opentelemetry-javaagent.jar"
+    //-javaagent:"/opentelemetry-javaagent.jar"
     //-Dotel.resource.attributes=service.name="my-app"
     //-Dotel.javaagent.debug=true
 
